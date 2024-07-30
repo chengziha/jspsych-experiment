@@ -1,0 +1,47 @@
+.image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+.likert-scale {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+.likert-scale li {
+        flex: 1;
+        text-align: center;
+      }
+.likert-container {
+        width: 100%;
+        text-align: center;
+      }
+.image-prompt {
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+.guidance-text {
+        text-align: center;
+        margin-bottom: 5px; /* 根据需要调整间距 */
+        margin-top: 80px;
+        font-size:20px;
+        font-style:normal;
+        font-weight: bold;
+      }
+.container{
+    margin-bottom: 30px;
+}
+.question{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.flex_container{
+    display: flex;
+    justify-content: center;
+}
