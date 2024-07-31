@@ -1,7 +1,7 @@
 <br>
 <h1>jsPsych心理学实验设计教程</h1>
 
-* * *
+
 ## 简介
 
 本教程将指导您如何使用jsPsych库来设计和实现一个心理学实验。jsPsych是一个JavaScript库，用于创建和运行心理学实验、调查和演示。
@@ -11,7 +11,7 @@
 - 基本的HTML、CSS和JavaScript知识。
 - 一个代码编辑器，如Visual Studio Code或Sublime Text。
 - 一个简单的Web服务器环境来运行您的HTML文件。
-
+* * *
 ## 1. 创建基础HTML文件
 
 首先，创建一个HTML文件，引入jsPsych及其插件的脚本和样式表。插件可在jspsych网站中(<https://www.jspsych.org/v7/>)找到并直接复制保存为js文件，也可以直接添加地址引用插件。
