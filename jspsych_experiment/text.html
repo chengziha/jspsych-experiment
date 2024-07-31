@@ -351,13 +351,14 @@
     }
 
     //将各实验环节添加进时间轴中
-    timeline.push(welcome);
-    timeline.push(participantInfo);
-    timeline.push(trail1);
-    timeline.push(trail2);
-    timeline.push(trail3);
-    timeline.push(finish);
-    timeline.push(exit_fullscreen);
+    timeline.push(welcome);//欢迎页
+    timeline.push(participantInfo);//收集被试信息
+    timeline.push(trail1);//正式实验1
+    timeline.push(trail2);//正式实验2
+    timeline.push(trail3);//正式实验3
+    timeline.push(finish);//结束页
+    timeline.push(exit_fullscreen);//退出全屏
+
     jsPsych.run(timeline);//启动实验
 
   </script>

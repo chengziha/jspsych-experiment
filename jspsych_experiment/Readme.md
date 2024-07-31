@@ -1,6 +1,7 @@
 <br>
 <h1>jsPsych心理学实验设计教程</h1>
 
+* * *
 ## 简介
 
 本教程将指导您如何使用jsPsych库来设计和实现一个心理学实验。jsPsych是一个JavaScript库，用于创建和运行心理学实验、调查和演示。
@@ -14,6 +15,7 @@
 ## 1. 创建基础HTML文件
 
 首先，创建一个HTML文件，引入jsPsych及其插件的脚本和样式表。插件可在jspsych网站中(<https://www.jspsych.org/v7/>)找到并直接复制保存为js文件，也可以直接添加地址引用插件。
+
 
 ```html
 <!DOCTYPE html>
@@ -31,7 +33,7 @@
   <body></body>
 </html>
 ```
-## 2.初始化jsPsych
+## 2. 初始化jsPsych
 在`<body>`标签的底部`</body>`之前，初始化jsPsych并设置实验的全局参数。
 ```html
 <script>
@@ -44,7 +46,7 @@
   });
 </script>
 ```
-## 3.定义相关辅助函数
+## 3. 定义相关辅助函数
 定义保存数据到文件的辅助函数，以.csv的格式保存被试的实验数据。
 saveTextToFile函数用于将数据保存为csv文件。
 
@@ -107,7 +109,7 @@ function JSON2CSV(objArray) {
 }
 ```
 
-## 4.创建数据收集类
+## 4. 创建数据收集类
 创建一个`DataCollection`类，用于管理实验数据并提供保存数据的方法。
 
 ```javascript
@@ -139,13 +141,13 @@ class DataCollection {
         saveTextToFile(data_string, filename,'text/csv');
     }}
 ```
-## 5.设计实验流程
+## 5. 设计实验流程
 创建一个时间轴数组`timeline`，用于存放实验的所有步骤。
 
 ```javascript
 let timeline = [];
 ```
-### 5.1预加载资源
+### 5.1 预加载资源
 使用`jsPsychPreload`插件预加载实验中使用的图片和其他资源。
 
 ```javascript
@@ -157,7 +159,7 @@ let preload = {
 timeline.push(preload);
 ```
 
-### 5.2欢迎语
+### 5.2 欢迎语
 创建欢迎语页面，告知被试实验的目的和重要性。
 
 ```javascript
@@ -172,21 +174,34 @@ let welcome = {
 };
 timeline.push(welcome);
 ```
-### 5.3收集被试信息
+### 5.3 收集被试信息
 使用`jsPsychSurveyHtmlForm`插件收集参与者的基本信息。
-```javascript 
+```javascript
 var participantInfo = {
   type: jsPsychSurveyHtmlForm,
   preamble: '请输入您的个人信息',
   html: `
   <div style="max-width: 400px; margin: 0 auto;font-size:24px">
-  <!-- 表单输入字段 -->
+  <!-- 表单输入字段，例：收集被试年龄和性别信息 -->
+  <div style="display: flex; align-items: center; margin-bottom: 25px;">
+      <div style="width: 80px; text-align: right;">年龄:</div>
+      <input name="name" type="text" placeholder="请填写年龄" style="flex: 1; font-size:24px; margin-left: 10px; padding: 5px; border: 1px solid #ccc;" required>
+      </div>
+
+      <div style="display: flex; align-items: center; margin-bottom: 25px;">
+      <label for="sex" style="width: 80px; text-align: right;">性别:</label>
+      <select id=sex" name="sex" style="flex: 1; font-size:24px; margin-left: 10px; padding: 5px; border: 1px solid #ccc;">
+        <option value="" disabled selected hidden>请选择性别</option>
+        <option value="0">男</option>
+        <option value="1">女</option>
+      </select>
+      </div>
   </div>
   `
 };
 timeline.push(participantInfo);
 ```
-### 5.5实验任务开展
+### 5.4 实验任务开展
 创建实验任务，使用`jsPsychSurveyLikert`插件来收集参与者对一系列问题的评分。
 ```javascript
 let trail1 = {
@@ -204,7 +219,7 @@ let trail1 = {
 };
 timeline.push(trail1);
 ```
-### 5.5步骤添加至时间轴
+### 5.5 实验各步骤添加至时间轴
 完成对实验流程的步骤定义后，将各步骤按照时间顺序添加到时间轴。
 ```javascript
 timeline.push(welcome);//欢迎语
@@ -215,7 +230,7 @@ timeline.push(trail1);//正式实验
 timeline.push(finish);//结束语
 timeline.push(exit_fullscreen);//推出全屏
 ```
-### 5.6结束实验
+### 5.6 结束实验
 实验结束后，由页面展示结束语，同时提供给被试结束按钮，便于实验数据的收集。
 ```javascript
 let finish = {
@@ -228,7 +243,7 @@ let finish = {
 timeline.push(finish);
 ```
 
-### 5.7退出全屏
+### 5.7 退出全屏
 实验结束后，退出全屏模式。
 ```javascript
 let exit_fullscreen = {
@@ -237,13 +252,13 @@ let exit_fullscreen = {
 };
 timeline.push(exit_fullscreen);
 ```
-## 6.运行实验
+## 6. 运行实验
 使用`jsPsych.run()`函数来启动实验。
 ```javascript
 jsPsych.run(timeline);
 ```
 
-## 7.数据收集与分析
+## 7. 数据收集与分析
 jsPsych会在实验结束时收集所有实验过程中的数据内容，并允许您将其保存为CSV或JSON格式。
 
 
